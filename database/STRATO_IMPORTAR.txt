@@ -1,0 +1,9 @@
+ACADEMIA STAR — INSTALACIÓN EN STRATO
+
+1. Entra en phpMyAdmin desde STRATO.
+2. Selecciona la base de datos dbs15496785.
+3. Importa database/install.sql.
+4. Después importa, en este orden, los update_*.sql que necesites para llegar a la versión actual.
+5. Si quieres instalar la versión actual desde cero, usa el instalador consolidado STRATO_V6_COMPLETO.sql.
+
+IMPORTANTE: estos SQL ya NO contienen CREATE DATABASE ni USE leire_app.

@@ -1,0 +1,22 @@
+<?php
+require_once __DIR__ . '/../app/auth.php';
+require_once __DIR__ . '/../app/helpers.php';
+$user=require_admin();
+ensure_admin_v524_tables();
+$message='';
+if ($_SERVER['REQUEST_METHOD']==='POST') {
+    $action=$_POST['action'] ?? 'save_subject';
+    if ($action==='save_subject') $message=admin_save_subject((int)($_POST['subject_id'] ?? 0),(string)($_POST['name'] ?? ''),(string)($_POST['icon'] ?? ''),(string)($_POST['slug'] ?? ''),(int)($_POST['sort_order'] ?? 100),!empty($_POST['active']));
+    elseif ($action==='delete_subject') $message=admin_delete_subject((int)($_POST['subject_id'] ?? 0),(string)($_POST['admin_pin'] ?? ''));
+}
+$subjects=admin_subjects_for_edit();
+$topicCounts=[];
+try { foreach(db()->query('SELECT subject, COUNT(*) c FROM topics GROUP BY subject')->fetchAll() as $r) $topicCounts[$r['subject']]=(int)$r['c']; } catch(Throwable $e) {}
+?>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Asignaturas · Academia Star</title><link rel="stylesheet" href="../public/assets/css/style.css?v=5.24"></head><body class="magic-ui admin-page-v524"><div class="admin-shell">
+<header class="admin-command-header"><div><span class="pill glow-pill">Biblioteca</span><h1>Asignaturas</h1><p class="muted">Aquí están los logos y colores de cada asignatura. Inglés usa bandera de Reino Unido, Lengua libro de texto y Francés torre Eiffel.</p></div><nav class="admin-top-actions"><a class="btn secondary" href="panel.php">Panel</a><a class="btn secondary" href="library.php">Biblioteca</a><a class="btn secondary" href="topic_edit.php">Añadir tema</a></nav></header>
+<?php if($message): ?><div class="notice reward admin-message"><?= e($message) ?></div><?php endif; ?>
+<section class="subject-logo-grid big-subjects"><?php foreach($subjects as $sub): ?><a class="subject-logo-card subject-<?= e($sub['slug']) ?> <?= (int)$sub['active']===1?'':'paused' ?>" href="library.php?subject=<?= urlencode($sub['name']) ?>"><span><?= e($sub['icon']) ?></span><b><?= e($sub['name']) ?></b><small><?= (int)($topicCounts[$sub['name']] ?? 0) ?> temas</small></a><?php endforeach; ?></section>
+<section class="card admin-card-purple"><h2>Editar asignaturas</h2><div class="subjects-admin-list"><?php foreach($subjects as $sub): ?><form method="post" class="subject-edit-row"><input type="hidden" name="action" value="save_subject"><input type="hidden" name="subject_id" value="<?= (int)$sub['id'] ?>"><input class="input" name="icon" value="<?= e($sub['icon']) ?>" title="Icono"><input class="input" name="name" value="<?= e($sub['name']) ?>" title="Nombre"><input class="input" name="slug" value="<?= e($sub['slug']) ?>" title="Slug CSS"><input class="input" type="number" name="sort_order" value="<?= (int)$sub['sort_order'] ?>" title="Orden"><label class="checkbox-line"><input type="checkbox" name="active" value="1" <?= (int)$sub['active']===1?'checked':'' ?>> Activa</label><button class="btn secondary small">Guardar</button></form><?php endforeach; ?></div></section>
+<section class="admin-two-cols"><div class="card admin-card-green"><h2>Añadir asignatura</h2><form method="post" class="form"><input type="hidden" name="action" value="save_subject"><input type="hidden" name="subject_id" value="0"><label>Icono<input class="input" name="icon" placeholder="Ej: 🧪"></label><label>Nombre<input class="input" name="name" placeholder="Nombre de asignatura"></label><label>Slug<input class="input" name="slug" placeholder="sin espacios, opcional"></label><label>Orden<input class="input" type="number" name="sort_order" value="100"></label><label class="checkbox-line"><input type="checkbox" name="active" value="1" checked> Activa</label><button class="btn">Añadir asignatura</button></form></div><div class="card admin-card-red"><h2>Eliminar asignatura</h2><p class="muted">Solo deja eliminar si no tiene temas. Si tiene temas, cambia esos temas a otra asignatura o bórralos primero.</p><form method="post" class="form" onsubmit="return confirm('¿Eliminar la asignatura?')"><input type="hidden" name="action" value="delete_subject"><select class="input" name="subject_id"><?php foreach($subjects as $sub): ?><option value="<?= (int)$sub['id'] ?>"><?= e($sub['icon'].' '.$sub['name']) ?></option><?php endforeach; ?></select><input class="input pin-input" type="password" name="admin_pin" placeholder="PIN 2283"><button class="btn danger">Eliminar asignatura</button></form></div></section>
+</div></body></html>
