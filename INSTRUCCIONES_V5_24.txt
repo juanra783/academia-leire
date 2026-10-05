@@ -1,0 +1,36 @@
+ACADEMIA STAR V6.1 · ADMIN TOTAL + FRANCÉS
+
+1) Copia estas carpetas encima de tu instalación actual:
+   - app
+   - admin
+   - public
+   - database
+
+2) Importa en phpMyAdmin:
+   database/update_v5_24_admin_total.sql
+
+3) Entra al admin:
+   https://sofrial.es/app/admin/panel.php
+
+CAMBIOS PRINCIPALES
+- Login más épico, centrado y limpio.
+- Panel Admin convertido en una página de administración real.
+- Bloques diferenciados por colores.
+- Selector de alumno activo.
+- Nueva página admin/students.php para añadir alumnos y cambiar sus datos.
+- Nueva página admin/reward_rules.php para reglas de recompensa.
+- Nueva página admin/library.php con asignatura -> desplegable de temas -> página del tema.
+- Nueva página admin/subjects.php para añadir, editar, activar, ordenar o eliminar asignaturas.
+- Nueva página admin/app_manager.php con accesos a funciones de la app.
+- Asignatura Francés añadida.
+- Logos/iconos:
+  Matemáticas: ➗
+  Lengua: 📘
+  Conocimiento: 🌍
+  Inglés: 🇬🇧
+  Francés: 🗼
+- SQL incluye tablas que podían faltar, como manual_homeworks.
+
+IMPORTANTE
+Si en móvil sigue saliendo diseño antiguo, elimina la PWA instalada y vuelve a instalarla.
+En navegador de PC, pulsa Ctrl + F5.

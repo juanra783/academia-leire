@@ -1,0 +1,7 @@
+ACADEMIA STAR 6.1
+
+- Configuración MySQL preparada para STRATO.
+- Gestor DAZN rediseñado con menú lateral, filtros, edición, copia de credenciales y acceso al servicio.
+- Examen Loco adaptado al lenguaje visual claro de Nuevo Curso 6.0, manteniendo efectos y animaciones.
+- SQL sanitizado: no crea ni selecciona la antigua base de datos leire_app.
+- Base de datos STRATO: dbs15496785.
