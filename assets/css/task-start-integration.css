@@ -1,0 +1,16 @@
+/* Academia Star 6.13.1 — botón Empezar */
+.task-start-button,
+a[href*="task_activity.php"] {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  padding:10px 18px;
+  border-radius:12px;
+  background:#4f46e5;
+  color:#fff!important;
+  font-weight:800;
+  text-decoration:none;
+}
+.task-start-button:hover,
+a[href*="task_activity.php"]:hover { background:#3730a3; }

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Avatar Emilia">
+  <defs><linearGradient id="b" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ffd6ee"/><stop offset=".55" stop-color="#d9c7ff"/><stop offset="1" stop-color="#c6f6ff"/></linearGradient><linearGradient id="h" x1="0" x2="1"><stop stop-color="#24100a"/><stop offset=".6" stop-color="#6b351e"/><stop offset="1" stop-color="#2b140c"/></linearGradient></defs>
+  <rect width="512" height="512" rx="110" fill="url(#b)"/><circle cx="256" cy="256" r="190" fill="#fff" opacity=".45"/>
+  <path d="M117 261c-25-112 30-205 139-205s168 90 139 207c-18 73-38 123-30 190H146c10-68-13-120-29-192z" fill="url(#h)"/>
+  <ellipse cx="256" cy="242" rx="103" ry="121" fill="#f3b98a"/>
+  <path d="M154 235c4-70 45-125 102-132 68 9 107 56 111 131-40-21-68-60-78-96-35 44-81 72-135 97z" fill="url(#h)"/>
+  <circle cx="218" cy="236" r="17" fill="#372015"/><circle cx="297" cy="236" r="17" fill="#372015"/><circle cx="224" cy="229" r="6" fill="#fff"/><circle cx="303" cy="229" r="6" fill="#fff"/>
+  <path d="M198 205c16-8 34-8 49 1M274 206c15-9 35-9 50 0" stroke="#26130d" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M221 316c22 22 52 22 73 0" stroke="#93464a" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <path d="M160 391c24-40 58-57 96-57s74 17 99 57v74H160z" fill="#8f6cff"/><path d="M218 360l38 31 39-31 15 82H203z" fill="#fff8f4"/>
+</svg>
